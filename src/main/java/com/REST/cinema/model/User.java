@@ -1,6 +1,6 @@
 package com.REST.cinema.model;
 
-import jakarta.persistence.Entity;
+import com.REST.cinema.model.film.Film;
 import jakarta.persistence.Id;
 
 import java.util.List;
