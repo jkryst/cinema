@@ -12,6 +12,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Set;
+
 @Configuration
 public class LoadDatabase {
 
@@ -20,10 +22,12 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(FilmRepository filmRep, RestrictionRespository restrictionRep, GenreRepository genreRep) {
 
-        restrictionRep.save(new Restriction("G – General Audiences",
-                "All ages admitted. Nothing that would offend parents for viewing by children."));
-        restrictionRep.save(new Restriction("NC-17 – Adults Only",
-                "No One 17 and Under Admitted. Clearly adult. Children are not admitted."));
+        Restriction g = new Restriction("G – General Audiences",
+                "All ages admitted. Nothing that would offend parents for viewing by children.");
+        restrictionRep.save(g);
+        Restriction nc = new Restriction("NC-17 – Adults Only",
+                "No One 17 and Under Admitted. Clearly adult. Children are not admitted.");
+        restrictionRep.save(nc);
 
         genreRep.save(new Genre("Horror"));
         genreRep.save(new Genre("Comedy"));
@@ -31,11 +35,13 @@ public class LoadDatabase {
         genreRep.save(new Genre("Fantasy"));
 
 
-        filmRep.save(new Film("Apokawixa", "Lorem ipsum", "" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit", restrictionRep.findById(1L), 10.00));
+//        filmRep.save(new Film("Apokawixa", "Lorem ipsum", "" +
+//                "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 95, 10.00,
+//                restrictionRep.findById(1L),
+//                Set<Genre>));
 
-        filmRep.save(new Film("Hello", "Lorem ipsum", "" +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 130, 9.50));
+//        filmRep.save(new Film("Hello", "Lorem ipsum", "" +
+//                "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 130, 9.50));
 
 
 
