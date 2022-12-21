@@ -1,35 +1,27 @@
 package com.REST.cinema.model.film;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Genre {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
     String genreName;
 
-    @ManyToMany(mappedBy = "film_genres")
+    @ManyToMany(mappedBy = "genres")
     Set<Film> films;
 
-    public Genre() {
-    }
+       public Genre(String genreName) {
+       this.genreName = genreName;
+   }
 
-    public Genre(String genreName) {
-        this.genreName = genreName;
-    }
-
-    public String getGenreName() {
-        return genreName;
-    }
-
-    public void setGenreName(String categoryName) {
-        this.genreName = genreName;
-    }
 }

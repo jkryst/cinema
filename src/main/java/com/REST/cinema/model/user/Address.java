@@ -1,4 +1,4 @@
-package com.REST.cinema.model;
+package com.REST.cinema.model.user;
 
 public class Address {
     int id;

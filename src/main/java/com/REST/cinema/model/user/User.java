@@ -1,5 +1,6 @@
-package com.REST.cinema.model;
+package com.REST.cinema.model.user;
 
+import com.REST.cinema.model.Role;
 import com.REST.cinema.model.film.Film;
 import jakarta.persistence.Id;
 

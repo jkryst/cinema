@@ -1,18 +1,18 @@
 package com.REST.cinema.model.film;
 
-import com.REST.cinema.model.film.Film;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Restriction {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     String type;
 
@@ -21,27 +21,10 @@ public class Restriction {
     @OneToMany(mappedBy = "restriction")
     Set<Film> films;
 
-    public Restriction() {
-    }
 
     public Restriction(String type, String description) {
         this.type = type;
         this.description = description;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }
