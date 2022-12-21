@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PriceListItem {
+public class PriceListItemPrices {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    String priceItemName;
+    Pricelist pricelist;
 
-    public PriceListItem(String priceItemName) {
-        this.priceItemName = priceItemName;
-    }
+    PriceListItem item;
+
+    double price;
 }
