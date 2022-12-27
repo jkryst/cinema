@@ -1,12 +1,11 @@
 package com.REST.cinema.model.priceList;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -18,6 +17,9 @@ public class Pricelist {
     long id;
 
     String priceListName;
+
+    @OneToMany(mappedBy = "pricelist")
+    List<PricelistItemsPrices> itemsPrices;
 
     public Pricelist(String priceListName) {
         this.priceListName = priceListName;
