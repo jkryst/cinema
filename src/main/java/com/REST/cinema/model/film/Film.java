@@ -1,5 +1,6 @@
 package com.REST.cinema.model.film;
 
+import com.REST.cinema.model.show.Show;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,6 +30,9 @@ public class Film {
     joinColumns = @JoinColumn(name ="film_id"),
     inverseJoinColumns = @JoinColumn(name = "genre_id") )
     Set<Genre> genres;
+
+    @OneToMany(mappedBy = "film")
+    Set<Show> shows;
 
     public Film(String title, String shortDescription, String longDescription, int duration, double rating, Restriction restriction, Set<Genre> genres) {
         this.title = title;

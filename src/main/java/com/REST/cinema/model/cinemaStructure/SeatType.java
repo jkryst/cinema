@@ -19,7 +19,7 @@ public class SeatType {
     String type;
 
     @OneToMany
-    @JoinColumn(name="seat", nullable = false)
+    @JoinColumn(name="seat_id", nullable = false)
     List<Seat> seats;
 
     @OneToMany(mappedBy = "seatType")

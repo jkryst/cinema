@@ -23,8 +23,8 @@ public class Seat {
     @JoinColumn(name="seat_type_id", nullable = false)
     SeatType seatType;
 
-//    public Seat(Screen screen, SeatType seatType) {
-//        this.screen = screen;
-//        this.seatType = seatType;
-//    }
+    public Seat(Screen screen, SeatType seatType) {
+        this.screen = screen;
+        this.seatType = seatType;
+    }
 }

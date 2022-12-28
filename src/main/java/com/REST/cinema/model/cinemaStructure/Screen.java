@@ -2,6 +2,7 @@ package com.REST.cinema.model.cinemaStructure;
 
 import com.REST.cinema.model.film.Genre;
 import com.REST.cinema.model.film.Restriction;
+import com.REST.cinema.model.show.Show;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,9 @@ public class Screen {
 
     @OneToMany(mappedBy = "screen")
     List<Seat> seats;
+
+    @OneToMany(mappedBy = "screen")
+    Set<Show> shows;
 
     public Screen(int rows, double columns, List<Seat> seats) {
         this.rows = rows;
