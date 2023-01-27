@@ -18,7 +18,15 @@ public class ShowMapper {
         return ShowDto.builder()
                 .movieTitle(show.getMovie().getTitle())
                 .time(show.getTime())
-                .occupiedSeats(show.getOccupiedSeats().stream().map(SeatMapper::map).collect(Collectors.toList()))
+                .build();
+
+    }
+
+    public static ShowDtoList mapToList(Show show) {
+
+        return ShowDtoList.builder()
+                .id(show.getId())
+                .time(show.getTime().getHour()+":"+show.getTime().getMinute())
                 .build();
 
     }

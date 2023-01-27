@@ -6,7 +6,7 @@ import com.REST.cinema.features.show.Show;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -27,12 +27,12 @@ public class Movie {
     @JoinTable(name="movie_genres",
     joinColumns =@JoinColumn(name = "movie_id"),
     inverseJoinColumns =@JoinColumn(name = "genre_id"))
-    Set<Genre> genres;
+    List<Genre> genres;
 
     @OneToMany(mappedBy = "movie")
-    Set<Show> shows;
+    List<Show> shows;
 
-    public Movie(String title, String shortDescription, String longDescription, int duration, double rating, Restriction restriction, Set<Genre> genres) {
+    public Movie(String title, String shortDescription, String longDescription, int duration, double rating, Restriction restriction, List<Genre> genres) {
         this.title = title;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;

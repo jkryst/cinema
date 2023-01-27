@@ -1,5 +1,6 @@
 package com.REST.cinema.features.show.dto;
 
+import com.REST.cinema.features.seat.Seat;
 import com.REST.cinema.features.seat.SeatType;
 import com.REST.cinema.features.seat.dto.SeatDto;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -15,12 +16,9 @@ import java.util.Map;
 public class ShowDto {
 
     String movieTitle;
+
     LocalDateTime time;
 
     SeatDto[][] screen;
-
-    List<SeatDto> occupiedSeats;
-
-    //Map<String, SeatDto> specialSeats;
 
 }

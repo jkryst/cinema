@@ -20,11 +20,4 @@ public class MovieController {
     List<MovieDto> getAll() {
         return movieService.getAllMovies();
     }
-
-    @GetMapping("/movies/shows/{showId}")
-    ShowDto getShow(@PathVariable Long showId){
-        return showService.getShowById(showId);
-
-    }
-
 }

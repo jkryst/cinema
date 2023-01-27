@@ -8,4 +8,5 @@ import lombok.Data;
 public class SeatDto {
     Long id;
     String type;
+    boolean isOccupied;
 }

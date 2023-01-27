@@ -18,6 +18,5 @@ public class MovieService {
     public List<MovieDto> getAllMovies(){
 
         return movieRepository.findAll().stream().map(MovieMapper::map).collect(Collectors.toList());
-
     }
 }

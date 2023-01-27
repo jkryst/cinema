@@ -1,12 +1,11 @@
 package com.REST.cinema.features.movie.movie.dto;
 
 import com.REST.cinema.features.movie.genre.dto.GenreDto;
-import com.REST.cinema.features.show.Show;
-import jakarta.persistence.*;
+import com.REST.cinema.features.show.dto.ShowDtoList;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Builder
@@ -18,7 +17,6 @@ public class MovieDto {
     int durationInMinutes;
     double rating;
     String restriction;
-    Set<GenreDto> genres;
-
-    //Set<ShowDto> shows;
+    List<GenreDto> genres;
+    List<ShowDtoList> shows;
 }

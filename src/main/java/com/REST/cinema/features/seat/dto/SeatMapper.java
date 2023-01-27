@@ -5,9 +5,8 @@ import com.REST.cinema.features.seat.Seat;
 public class SeatMapper {
     public static SeatDto map(Seat seat) {
         return SeatDto.builder()
-                .row(seat.getRowNum())
-                .numInRow(seat.getNumInRow())
-                .type(seat.getSeatType().toString())
+                .id(seat.getId())
+                .type(seat.getSeatType().getType())
                 .build();
     }
 }

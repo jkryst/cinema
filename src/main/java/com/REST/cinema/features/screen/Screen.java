@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor
@@ -23,10 +22,10 @@ public class Screen {
     //Seat[][] seats;
     @OneToMany
     @JoinColumn(name = "screen_id")
-    Set<Seat> seats;
+    List<Seat> seats;
 
     @OneToMany(mappedBy = "screen")
-    Set<Show> shows;
+    List<Show> shows;
 
     public Screen(int rows, int columns) {
         this.seatsInRow = rows;
