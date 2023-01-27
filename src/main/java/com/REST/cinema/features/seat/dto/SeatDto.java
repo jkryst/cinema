@@ -6,8 +6,6 @@ import lombok.Data;
 @Data
 @Builder
 public class SeatDto {
-    int row;
-    int numInRow;
-
+    Long id;
     String type;
 }

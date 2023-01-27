@@ -1,6 +1,7 @@
 package com.REST.cinema.features.show;
 
 
+import com.REST.cinema.features.screen.ScreenService;
 import com.REST.cinema.features.show.dto.ShowDto;
 import com.REST.cinema.features.show.dto.ShowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,13 @@ public class ShowService {
     @Autowired
     ShowRepository showRepository;
 
+    @Autowired
+    ScreenService screenService;
+
     public ShowDto getShowById(Long id){
         Show show = showRepository.findById(id).get();
-        return ShowMapper.map(show);
+        ShowDto showDto = ShowMapper.map(show);
+        showDto.setScreen(screenService.screenToArray(show.getScreen()));
     }
 
 

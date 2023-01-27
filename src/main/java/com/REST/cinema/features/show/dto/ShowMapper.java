@@ -15,13 +15,9 @@ public class ShowMapper {
 
     public static ShowDto map(Show show) {
 
-        //SeatDto[][] screen = new SeatDto[][][show.getScreen().getRows()][show.getScreen().getSeatsInRow()];
-        //Map<String, SeatDto> specialSeats = new HashMap<>();
-
         return ShowDto.builder()
                 .movieTitle(show.getMovie().getTitle())
                 .time(show.getTime())
-                .seats(show.getScreen().getSeats().stream().map(SeatMapper::map).collect(Collectors.toList()))
                 .occupiedSeats(show.getOccupiedSeats().stream().map(SeatMapper::map).collect(Collectors.toList()))
                 .build();
 

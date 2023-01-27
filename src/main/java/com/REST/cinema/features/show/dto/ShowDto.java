@@ -17,8 +17,8 @@ public class ShowDto {
     String movieTitle;
     LocalDateTime time;
 
-    //SeatDto[][] screen;
-    List<SeatDto> seats;
+    SeatDto[][] screen;
+
     List<SeatDto> occupiedSeats;
 
     //Map<String, SeatDto> specialSeats;
