@@ -14,12 +14,52 @@ INSERT INTO movie(title, short_description, long_description, duration_in_minute
    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
   90,
   8.00,
-  'R');
+  'R'),
+('Avatar Istota Wody', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    180,
+    8.00,
+    'R'),
+('Babilon', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    135,
+    7.70,
+    'G'),
+('Gra Fortuny', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    98,
+    8.00,
+    'R'),
+('Kot w butach', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    105,
+    8.00,
+    'PG'),
+('M3gan', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    120,
+    9.00,
+    'R'),
+('Mężczyzna imieniem Otto', 'Lorem ipsum dolor sit amet',
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+    120,
+    9.00,
+    'R');
+
 
 INSERT INTO movie_genres(movie_id, genre_id) VALUES
+(1,1),
 (2,2),
 (2,3),
-(1,1);
+(3,3),
+(4,1),
+(5,4),
+(5,1),
+(6,1),
+(7,2),
+(8,3),
+(8,4);
+
 
 INSERT INTO screen(seats_in_row, rows) VALUES
 (4,4),

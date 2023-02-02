@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 @Builder
-public class MovieDto {
+public class MovieWithShowsDto {
 
     long id;
     public String title;
@@ -18,4 +18,5 @@ public class MovieDto {
     double rating;
     String restriction;
     List<GenreDto> genres;
+    List<ShowDtoList> shows;
 }
