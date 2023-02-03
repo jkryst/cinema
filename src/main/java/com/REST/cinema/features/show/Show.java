@@ -9,7 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Entity
@@ -35,17 +37,20 @@ public class Show {
     @JoinColumn(name="pricelist_id", nullable = false)
     Pricelist pricelist;
 
-    LocalDateTime time;
+    LocalDate date;
+
+    LocalTime time;
 
     @ManyToMany
     @JoinTable(joinColumns = @JoinColumn(name="show_id"),
     inverseJoinColumns = @JoinColumn(name="seat_id"))
     List<Seat> occupiedSeats;
 
-    public Show(Movie movie, Screen screen, Pricelist pricelist, LocalDateTime time) {
+    public Show(Movie movie, Screen screen, Pricelist pricelist, LocalDate date, LocalTime time) {
         this.movie = movie;
         this.screen = screen;
         this.pricelist = pricelist;
+        this.date = date;
         this.time = time;
     }
 }

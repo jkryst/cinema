@@ -18,6 +18,7 @@ public class ShowMapper {
         return ShowDto.builder()
                 .movieTitle(show.getMovie().getTitle())
                 .time(show.getTime())
+                .date(show.getDate())
                 .build();
 
     }

@@ -7,7 +7,9 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +19,9 @@ public class ShowDto {
 
     String movieTitle;
 
-    LocalDateTime time;
+    LocalDate date;
+
+    LocalTime time;
 
     SeatDto[][] screen;
 

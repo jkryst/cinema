@@ -4,6 +4,8 @@ import com.REST.cinema.features.movie.genre.dto.GenreMapper;
 import com.REST.cinema.features.movie.movie.Movie;
 import com.REST.cinema.features.show.dto.ShowMapper;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.stream.Collectors;
 
 public class MovieMapper {
@@ -22,7 +24,7 @@ public class MovieMapper {
                 .build();
     }
 
-    public static MovieWithShowsDto mapWithShows(Movie movie) {
+    public static MovieWithShowsDto mapWithShowsbyDate(Movie movie, LocalDate date) {
         return MovieWithShowsDto.builder()
                 .id(movie.getId())
                 .title(movie.getTitle())
@@ -37,6 +39,14 @@ public class MovieMapper {
                 .shows(movie
                         .getShows()
                         .stream()
+                        .filter(show -> show.getDate().equals(date))
+                        .filter(show -> {
+                            if(date.equals(LocalDate.now())) {
+                             return show.getTime().isAfter(LocalTime.now());
+                            } else {
+                             return true;
+                            }
+                        })
                         .map(ShowMapper::mapToList)
                         .collect(Collectors.toList()))
                 .build();
