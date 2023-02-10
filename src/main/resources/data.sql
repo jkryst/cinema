@@ -63,7 +63,7 @@ INSERT INTO movie_genres(movie_id, genre_id) VALUES
 
 INSERT INTO screen(seats_in_row, rows) VALUES
 (4,4),
-(5,5);
+(5,4);
 
 INSERT INTO seat_type(type) VALUES
 ('regular'),

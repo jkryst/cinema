@@ -23,6 +23,8 @@ public class ShowDto {
 
     LocalTime time;
 
+    int screenNum;
+
     SeatDto[][] screen;
 
 }

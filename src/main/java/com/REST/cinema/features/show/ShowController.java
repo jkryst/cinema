@@ -1,6 +1,7 @@
 package com.REST.cinema.features.show;
 
 import com.REST.cinema.features.show.dto.ShowDto;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,7 @@ public class ShowController {
 
     @Autowired
     private ShowService showService;
+
 
     @GetMapping("/shows/{showId}")
     ShowDto getShow(@PathVariable Long showId){

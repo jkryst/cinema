@@ -28,15 +28,21 @@ public class ShowService {
     }
 
     public SeatDto[][] getShowSeatChart(Show show) {
+
         Seat[][] seats = screenService.screenToArray(show.getScreen());
         SeatDto[][] seatsDto = new SeatDto[seats.length][seats[0].length];
 
+        System.out.println("mapping to dto: ...");
+
         for(int i = 0; i<seatsDto.length; i++) {
             for(int j = 0; j<seatsDto[0].length; j++) {
+                System.out.println("mapping to dto: ...");
                 seatsDto[i][j] = SeatMapper.map(seats[i][j]);
+                System.out.println("mapped to:"+seatsDto[i][j].getType());
                 if(isSeatOccupied(seats[i][j], show)) {
                     seatsDto[i][j].isOccupied();
                 }
+
             }
         }
         return seatsDto;
@@ -45,6 +51,5 @@ public class ShowService {
     public boolean isSeatOccupied(Seat seat, Show show) {
         return show.getOccupiedSeats().contains(seat);
     }
-
 
 }

@@ -19,6 +19,7 @@ public class ShowMapper {
                 .movieTitle(show.getMovie().getTitle())
                 .time(show.getTime())
                 .date(show.getDate())
+                .screenNum((int) show.getScreen().getId())
                 .build();
 
     }

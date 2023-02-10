@@ -56,5 +56,4 @@ public class MovieService {
         return movies.map(MovieMapper::map);
     }
 
-
 }
