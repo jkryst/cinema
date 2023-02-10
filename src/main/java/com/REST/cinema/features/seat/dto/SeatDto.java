@@ -1,12 +1,13 @@
 package com.REST.cinema.features.seat.dto;
 
-import lombok.Builder;
-import lombok.Data;
+import java.util.Map;
 
-@Data
-@Builder
 public class SeatDto {
-    Long id;
-    String type;
-    boolean isOccupied;
+    long id;
+
+    int rowNum;
+
+    int numInRow;
+    Map<String, Double> prices;
+
 }

@@ -1,5 +1,6 @@
 package com.REST.cinema.features.show;
 
+import com.REST.cinema.features.seat.dto.SeatDto;
 import com.REST.cinema.features.show.dto.ShowDto;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class ShowController {
     @GetMapping("/shows/{showId}")
     ShowDto getShow(@PathVariable Long showId){
     return showService.getShowById(showId);
+    }
+
+    @GetMapping("/shows/{showId}/{seatId}")
+    SeatDto getSeatDetails(@PathVariable Long showId, @PathVariable Long seatId){
+        return showService.selectSeat(showId, seatId);
     }
 }

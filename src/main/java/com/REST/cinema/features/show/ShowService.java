@@ -1,9 +1,11 @@
 package com.REST.cinema.features.show;
 
 
+import com.REST.cinema.features.pricelist.Pricelist;
 import com.REST.cinema.features.screen.ScreenService;
 import com.REST.cinema.features.seat.Seat;
 import com.REST.cinema.features.seat.dto.SeatDto;
+import com.REST.cinema.features.seat.dto.SeatListDto;
 import com.REST.cinema.features.seat.dto.SeatMapper;
 import com.REST.cinema.features.show.dto.ShowDto;
 import com.REST.cinema.features.show.dto.ShowMapper;
@@ -27,10 +29,10 @@ public class ShowService {
         return showDto;
     }
 
-    public SeatDto[][] getShowSeatChart(Show show) {
+    public SeatListDto[][] getShowSeatChart(Show show) {
 
         Seat[][] seats = screenService.screenToArray(show.getScreen());
-        SeatDto[][] seatsDto = new SeatDto[seats.length][seats[0].length];
+        SeatListDto[][] seatsDto = new SeatListDto[seats.length][seats[0].length];
 
         System.out.println("mapping to dto: ...");
 
@@ -50,6 +52,14 @@ public class ShowService {
 
     public boolean isSeatOccupied(Seat seat, Show show) {
         return show.getOccupiedSeats().contains(seat);
+    }
+
+    public SeatDto selectSeat(long showId, long seatId) {
+
+        Show show = showRepository.findById(showId).get();
+
+        Pricelist pricelist = show.getPricelist();
+
     }
 
 }
