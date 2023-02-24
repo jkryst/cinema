@@ -3,6 +3,7 @@ import com.REST.cinema.features.movie.movie.dto.MovieDto;
 import com.REST.cinema.features.movie.movie.dto.MovieWithShowsDto;
 import com.REST.cinema.features.show.ShowService;
 import com.REST.cinema.features.show.dto.ShowDto;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.data.domain.Page;

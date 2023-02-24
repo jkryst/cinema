@@ -3,8 +3,8 @@ package com.REST.cinema.features.seat.dto;
 import com.REST.cinema.features.seat.Seat;
 
 public class SeatMapper {
-    public static SeatListDto mapToSeatListDto(Seat seat) {
-        return SeatListDto.builder()
+    public static SeatOnGridDto mapToSeatListDto(Seat seat) {
+        return SeatOnGridDto.builder()
                 .id(seat.getId())
                 .type(seat.getSeatType().getType())
                 .build();

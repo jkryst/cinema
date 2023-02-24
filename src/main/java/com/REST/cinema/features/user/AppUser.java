@@ -1,8 +1,7 @@
 package com.REST.cinema.features.user;
 
 import com.REST.cinema.features.movie.movie.Movie;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -10,7 +9,8 @@ import java.util.List;
 @Entity
 public class AppUser {
     @Id
-    long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
 
     String firstName;
 
@@ -26,11 +26,15 @@ public class AppUser {
 
     String nip;
 
+    @OneToOne
     Address address;
 
+    @OneToOne
     Cart cart;
 
+    @OneToOne
     Role role;
 
+    @ManyToMany
     List<Movie> wishlist;
 }

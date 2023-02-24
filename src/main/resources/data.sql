@@ -115,7 +115,7 @@ INSERT INTO pricelist_item(price_item_name) VALUES
 ('adult'),
 ('student');
 
-INSERT INTO pricelist_items_prices(pricelist_id, pricelist_item_id, seat_type_id, price) VALUES
+INSERT INTO price(pricelist_id, pricelist_item_id, seat_type_id, price) VALUES
 (1, 1, 1, 30.0),
 (1, 1, 2, 35.0),
 (1, 2, 1, 20.0),

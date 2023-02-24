@@ -3,19 +3,20 @@ package com.REST.cinema.features.seat.dto;
 import com.REST.cinema.features.pricelist.PricelistItem;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Setter;
 
 import java.util.Map;
 
 @Builder
 @Data
-public class SeatWithPricesDto {
-    long id;
+public class SeatWithPriceDto {
 
     int rowNum;
 
     int numInRow;
 
-    Map<PricelistItem, Double> prices;
+    String ticketName;
+
+    double price;
 
 }
+

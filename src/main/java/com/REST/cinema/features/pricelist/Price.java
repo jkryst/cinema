@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PricelistItemsPrices {
+public class Price {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
@@ -29,7 +29,7 @@ public class PricelistItemsPrices {
 
     double price;
 
-    public PricelistItemsPrices(Pricelist pricelist, PricelistItem item, SeatType seatType, double price) {
+    public Price(Pricelist pricelist, PricelistItem item, SeatType seatType, double price) {
         this.pricelist = pricelist;
         this.item = item;
         this.seatType = seatType;

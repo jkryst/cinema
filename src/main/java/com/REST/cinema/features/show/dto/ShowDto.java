@@ -1,6 +1,6 @@
 package com.REST.cinema.features.show.dto;
 
-import com.REST.cinema.features.seat.dto.SeatListDto;
+import com.REST.cinema.features.seat.dto.SeatOnGridDto;
 import lombok.Builder;
 import lombok.Data;
 
@@ -19,6 +19,6 @@ public class ShowDto {
 
     int screenNum;
 
-    SeatListDto[][] screen;
+    SeatOnGridDto[][] screen;
 
 }

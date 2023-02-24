@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class SeatListDto {
+public class SeatOnGridDto {
     Long id;
     String type;
     boolean isOccupied;

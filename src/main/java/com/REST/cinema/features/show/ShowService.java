@@ -1,14 +1,12 @@
 package com.REST.cinema.features.show;
 
 
-import com.REST.cinema.features.pricelist.PriceListItemsPricesRepository;
-import com.REST.cinema.features.pricelist.Pricelist;
-import com.REST.cinema.features.pricelist.PricelistItemsPrices;
+import com.REST.cinema.features.pricelist.*;
 import com.REST.cinema.features.screen.ScreenService;
 import com.REST.cinema.features.seat.Seat;
 import com.REST.cinema.features.seat.SeatRepository;
 import com.REST.cinema.features.seat.dto.SeatWithPricesDto;
-import com.REST.cinema.features.seat.dto.SeatListDto;
+import com.REST.cinema.features.seat.dto.SeatOnGridDto;
 import com.REST.cinema.features.seat.dto.SeatMapper;
 import com.REST.cinema.features.show.dto.ShowDto;
 import com.REST.cinema.features.show.dto.ShowMapper;
@@ -32,9 +30,12 @@ public class ShowService {
     ScreenService screenService;
 
     @Autowired
-    PriceListItemsPricesRepository priceListItemsPricesRepository;
+    PriceService priceService;
 
-    public ShowDto getShowById(Long id){
+    @Autowired
+    PriceRepository priceListItemsPricesRepository;
+
+    public ShowDto getShowDtoById(Long id){
 
         Show show = showRepository.findById(id).get();
 
@@ -43,10 +44,15 @@ public class ShowService {
         return showDto;
     }
 
-    public SeatListDto[][] getShowSeatChart(Show show) {
+    public Show getShowById(Long id){
+
+        return showRepository.findById(id).get();
+    }
+
+    public SeatOnGridDto[][] getShowSeatChart(Show show) {
 
         Seat[][] seats = screenService.screenToArray(show.getScreen());
-        SeatListDto[][] seatsDto = new SeatListDto[seats.length][seats[0].length];
+        SeatOnGridDto[][] seatsDto = new SeatOnGridDto[seats.length][seats[0].length];
 
         for(int i = 0; i<seatsDto.length; i++) {
             for(int j = 0; j<seatsDto[0].length; j++) {
@@ -70,22 +76,30 @@ public class ShowService {
         Show show = showRepository.findById(showId).get();
         Seat seat = seatRepository.findById(seatId).get();
 
-        Pricelist pricelist = show.getPricelist();
+        List<Price> prices = priceService.getPrices(show, seat);
 
-        List<PricelistItemsPrices> prices = priceListItemsPricesRepository.findAllByPricelistIdAndSeatTypeId(pricelist.getId(), seat.getSeatType().getId());
-
-        Map<String, Double> tickets = new HashMap<String, Double>();
+        Map<PricelistItem, Double> tickets = new HashMap<PricelistItem, Double>();
         prices.forEach(e -> {
-            tickets.put(e.getItem().getPriceItemName(), e.getPrice());
+            tickets.put(e.getItem(), e.getPrice());
         });
 
         SeatWithPricesDto seatWithPricesDto = SeatMapper.mapToSeatWithPricesDto(seat);
         seatWithPricesDto.setPrices(tickets);
 
+        setSeatOccupied(show, seat);
+
+        return seatWithPricesDto;
+    }
+
+    public void setSeatOccupied(Show show, Seat seat) {
         List<Seat> ocuppiedSeats = show.getOccupiedSeats();
         ocuppiedSeats.add(seat);
         show.setOccupiedSeats(ocuppiedSeats);
+    }
 
-        return seatWithPricesDto;
+    public void setSeatNotOccupied(Show show, Seat seat) {
+        List<Seat> ocuppiedSeats = show.getOccupiedSeats();
+        ocuppiedSeats.remove(seat);
+        show.setOccupiedSeats(ocuppiedSeats);
     }
 }
