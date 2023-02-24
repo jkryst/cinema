@@ -1,16 +1,12 @@
 package com.REST.cinema.features.order;
 
 import com.REST.cinema.features.user.Invoice;
-import com.REST.cinema.features.user.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.REST.cinema.features.user.AppUser;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +20,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    User user;
+    @ManyToOne
+    AppUser appUser;
 
     String firstName;
 
@@ -34,14 +31,18 @@ public class Order {
 
     String email;
 
+    @OneToOne
     Invoice invoice;
 
+    @OneToMany
     List<Ticket> tickets;
 
     LocalDateTime date;
 
+    @OneToOne
     Payment payment;
 
-    BufferedImage qrCode;
+//    @OneToOne
+//    BufferedImage qrCode;
 
 }

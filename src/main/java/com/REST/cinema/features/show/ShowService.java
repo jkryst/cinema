@@ -73,8 +73,8 @@ public class ShowService {
         Pricelist pricelist = show.getPricelist();
 
         List<PricelistItemsPrices> prices = priceListItemsPricesRepository.findAllByPricelistIdAndSeatTypeId(pricelist.getId(), seat.getSeatType().getId());
-        Map<String, Double> tickets = new HashMap<String, Double>();
 
+        Map<String, Double> tickets = new HashMap<String, Double>();
         prices.forEach(e -> {
             tickets.put(e.getItem().getPriceItemName(), e.getPrice());
         });

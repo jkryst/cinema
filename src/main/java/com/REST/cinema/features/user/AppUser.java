@@ -1,12 +1,14 @@
 package com.REST.cinema.features.user;
 
 import com.REST.cinema.features.movie.movie.Movie;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 import java.util.List;
 
 
-public class User {
+@Entity
+public class AppUser {
     @Id
     long id;
 

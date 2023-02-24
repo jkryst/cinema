@@ -18,7 +18,7 @@ public class ShowController {
 
     @GetMapping("/shows/{showId}")
     ShowDto getShow(@PathVariable Long showId){
-    return showService.getShowById(showId);
+        return showService.getShowById(showId);
     }
 
     @PatchMapping("/shows/{showId}/seats/{seatId}")
