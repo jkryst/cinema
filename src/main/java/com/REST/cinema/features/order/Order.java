@@ -1,5 +1,6 @@
 package com.REST.cinema.features.order;
 
+import com.REST.cinema.features.ticket.Ticket;
 import com.REST.cinema.features.user.Invoice;
 import com.REST.cinema.features.user.AppUser;
 import jakarta.persistence.*;

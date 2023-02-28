@@ -1,4 +1,4 @@
-package com.REST.cinema.features.order;
+package com.REST.cinema.features.ticket;
 
 import com.REST.cinema.features.pricelist.Price;
 import com.REST.cinema.features.seat.Seat;

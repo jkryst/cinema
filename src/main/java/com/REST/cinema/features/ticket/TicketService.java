@@ -1,9 +1,10 @@
-package com.REST.cinema.features.order;
+package com.REST.cinema.features.ticket;
 
 import com.REST.cinema.features.pricelist.PriceService;
 import com.REST.cinema.features.seat.SeatService;
 import com.REST.cinema.features.show.Show;
 import com.REST.cinema.features.show.ShowService;
+import com.REST.cinema.features.ticket.dto.TicketsRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -23,12 +24,12 @@ public class TicketService {
 
     public void createTickets(TicketsRequestDto ticketsRequestDto) {
 
-        Show show = showService.getShowById(ticketsRequestDto.showID);
+        Show show = showService.getShowById(ticketsRequestDto.getShowID());
 
         List<Ticket> tickets = new ArrayList<>();
 
 
-        for (Map.Entry<Long, Long> entry : ticketsRequestDto.chosenSeatIdWithPricelistItemId.entrySet()
+        for (Map.Entry<Long, Long> entry : ticketsRequestDto.getChosenSeatIdWithPricelistItemId().entrySet()
              ) {
             Ticket ticket = new Ticket();
             ticket.setShow(show);

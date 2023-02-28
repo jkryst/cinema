@@ -1,5 +1,6 @@
-package com.REST.cinema.features.order;
+package com.REST.cinema.features.ticket;
 
+import com.REST.cinema.features.ticket.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
