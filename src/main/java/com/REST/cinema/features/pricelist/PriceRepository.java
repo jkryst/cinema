@@ -8,6 +8,4 @@ import java.util.List;
 @Repository
 public interface PriceRepository extends JpaRepository<Price, Long> {
     List<Price> findAllByPricelistIdAndSeatTypeId(Long pricelistId, Long seatTypeId);
-
-//    Price findByPriceListIdAndSeatTypeIdAndPricelistItemId(Long pricelistId, Long seatTypeId, Long priceListItemId);
 }

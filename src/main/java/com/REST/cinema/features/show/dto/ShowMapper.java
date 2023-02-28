@@ -5,13 +5,23 @@ import com.REST.cinema.features.show.Show;
 public class ShowMapper {
 
 
-    public static ShowDto map(Show show) {
+    public static ShowDtoWithGrid mapToShowDtoWithGrid(Show show) {
+
+        return ShowDtoWithGrid.builder()
+                .movieTitle(show.getMovie().getTitle())
+                .time(show.getTime())
+                .date(show.getDate())
+                .screenNum((int) show.getScreen().getId())
+                .build();
+
+    }
+
+    public static ShowDto mapToShowDto(Show show) {
 
         return ShowDto.builder()
                 .movieTitle(show.getMovie().getTitle())
                 .time(show.getTime())
                 .date(show.getDate())
-                .screenNum((int) show.getScreen().getId())
                 .build();
 
     }

@@ -1,24 +1,17 @@
 package com.REST.cinema.features.show.dto;
 
-import com.REST.cinema.features.seat.dto.SeatOnGridDto;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Data
+@Getter
 @Builder
 public class ShowDto {
+    private String movieTitle;
 
-    String movieTitle;
+    private LocalDate date;
 
-    LocalDate date;
-
-    LocalTime time;
-
-    int screenNum;
-
-    SeatOnGridDto[][] screen;
-
+    private LocalTime time;
 }

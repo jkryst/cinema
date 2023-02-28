@@ -8,15 +8,14 @@ import com.REST.cinema.features.seat.SeatRepository;
 import com.REST.cinema.features.seat.dto.SeatWithPricesDto;
 import com.REST.cinema.features.seat.dto.SeatOnGridDto;
 import com.REST.cinema.features.seat.dto.SeatMapper;
-import com.REST.cinema.features.show.dto.ShowDto;
+import com.REST.cinema.features.show.dto.ShowDtoWithGrid;
 import com.REST.cinema.features.show.dto.ShowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ShowService {
@@ -35,13 +34,13 @@ public class ShowService {
     @Autowired
     PriceRepository priceListItemsPricesRepository;
 
-    public ShowDto getShowDtoById(Long id){
+    public ShowDtoWithGrid getShowDtoById(Long id){
 
         Show show = showRepository.findById(id).get();
 
-        ShowDto showDto = ShowMapper.map(show);
-        showDto.setScreen(getShowSeatChart(show));
-        return showDto;
+        ShowDtoWithGrid showDtoWithGrid = ShowMapper.mapToShowDtoWithGrid(show);
+        showDtoWithGrid.setScreen(getShowSeatChart(show));
+        return showDtoWithGrid;
     }
 
     public Show getShowById(Long id){
@@ -78,13 +77,8 @@ public class ShowService {
 
         List<Price> prices = priceService.getPrices(show, seat);
 
-        Map<PricelistItem, Double> tickets = new HashMap<PricelistItem, Double>();
-        prices.forEach(e -> {
-            tickets.put(e.getItem(), e.getPrice());
-        });
-
         SeatWithPricesDto seatWithPricesDto = SeatMapper.mapToSeatWithPricesDto(seat);
-        seatWithPricesDto.setPrices(tickets);
+        seatWithPricesDto.setPrices(prices.stream().map(PriceMapper::mapPriceToPriceDto).collect(Collectors.toList()));
 
         setSeatOccupied(show, seat);
 

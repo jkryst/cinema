@@ -1,7 +1,7 @@
 package com.REST.cinema.features.show;
 
 import com.REST.cinema.features.seat.dto.SeatWithPricesDto;
-import com.REST.cinema.features.show.dto.ShowDto;
+import com.REST.cinema.features.show.dto.ShowDtoWithGrid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +14,7 @@ public class ShowController {
 
 
     @GetMapping("/shows/{showId}")
-    ShowDto getShow(@PathVariable Long showId){
+    ShowDtoWithGrid getShow(@PathVariable Long showId){
         return showService.getShowDtoById(showId);
     }
 

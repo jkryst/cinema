@@ -17,8 +17,8 @@ public class PriceService {
         return priceRepository.findAllByPricelistIdAndSeatTypeId(show.getPricelist().getId(), seat.getSeatType().getId());
     }
 
-//    public Price getPrice(Show show, Seat seat, Long pricelistItemId) {
-//        return priceRepository.findByPriceListIdAndSeatTypeIdAndPricelistItemId(show.getPricelist().getId(), seat.getSeatType().getId(), pricelistItemId);
-//    }
+    public Price getPriceById(Long priceId) {
+        return priceRepository.findById(priceId).get();
+    }
 
 }

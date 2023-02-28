@@ -1,10 +1,12 @@
 package com.REST.cinema.features.seat.dto;
 
+import com.REST.cinema.features.pricelist.PriceDto;
 import com.REST.cinema.features.pricelist.PricelistItem;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Map;
 
 @Builder
@@ -16,6 +18,6 @@ public class SeatWithPricesDto {
 
     int numInRow;
 
-    Map<PricelistItem, Double> prices;
+    List<PriceDto> prices;
 
 }
